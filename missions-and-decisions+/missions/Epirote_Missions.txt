@@ -1,0 +1,57 @@
+epirote_missions = {
+	slot = 1 #upper left column
+	generic = yes #if a mission without generic = yes wants this slot then it overrides this.
+	ai = yes
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		tag = EPI
+	}
+	has_country_shield = yes
+	
+	seize_morea = {
+		icon = expand_to_the_south
+		required_missions = {  } #None
+            position = 1
+            provinces_to_highlight = {
+ OR = {
+		area = morea_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+		  morea = {
+				type = all
+				owned_by = ROOT
+		}
+}
+		effect = {
+                add_treasury = 50
+		}
+	}
+	recover_northern_greece = {
+		icon = despot_of_epirus
+		required_missions = { seize_morea }
+		position = 2
+	
+		ai_priority = {
+			factor = 2
+		}
+		
+		provinces_to_highlight = {
+OR = {
+				area = northern_greece_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+                 northern_greece_area = {
+				type = all
+				owned_by = ROOT
+		}
+	}
+
+              efffect  {
+              add_treasury = 100   
+		}
+	}	
